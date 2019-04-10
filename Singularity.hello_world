@@ -45,3 +45,4 @@ From: centos
    # the previous 'post' section of the recipe file
    # so, if you need them, define them there as well
    export PATH=$PATH:/myapp
+
