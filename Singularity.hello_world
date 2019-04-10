@@ -31,8 +31,8 @@ From: centos
    g++ -o hello_world hello_world.cpp
    
    cd /myapp/PoLiMEr
-   chmod +x make-theta.sh
-   ./make-theta.sh
+   export CRAYPE_LINK_TYPE=dynamic
+   make CRAY=yes COBALT=yes NOOMP=yes
 
 %runscript
    # run script
