@@ -1,9 +1,9 @@
 MPI=yes
 CRAY=yes
 
-CC=`which mpicc`
+CC=mpicc
 ifeq ($(MPI),no)
-CC=`which cc`
+CC=gcc
 endif
 
 CFLAGS=-O3 -D_MPI -g -I../../include
@@ -11,7 +11,7 @@ ifeq ($(JLSE),yes)
 CFLAGS+= -fopenmp
 endif
 ifeq ($(CRAY),yes)
-CC=`which cc`
+CC=mpicc
 CFLAGS+= -qopenmp
 endif
 ifeq ($(BGQ),yes)

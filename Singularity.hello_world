@@ -34,7 +34,7 @@ From: centos
    # disable the addition of the RPATH to compiled executables
    # this allows us to override the MPI libraries to use those
    # found via LD_LIBRARY_PATH
-   ./configure --prefix=/mpich/install --disable-wrapper-rpath --with_pm=no --with-pmi=cray
+   ./configure --prefix=/mpich/install --disable-wrapper-rpath
    make -j 4 install
    # add to local environment to build pi.c
    export PATH=$PATH:/mpich/install/bin
@@ -48,9 +48,10 @@ From: centos
    mpicc -o pi -fPIC pi.c
 
    # build PoLiMEr 
-   cd /myapp/PoLiMEr
+   cd /myapp/PoLiMEr/test/hello
    export CRAYPE_LINK_TYPE=dynamic
-   make CRAY=yes COBALT=yes NOOMP=yes
+   #make CRAY=yes COBALT=yes NOOMP=yes
+   make all
 
 %runscript
    # run script
@@ -63,4 +64,5 @@ From: centos
    # the previous 'post' section of the recipe file
    # so, if you need them, define them there as well
    export PATH=$PATH:/myapp
+   export CRAYPE_LINK_TYPE=dynamic
 
