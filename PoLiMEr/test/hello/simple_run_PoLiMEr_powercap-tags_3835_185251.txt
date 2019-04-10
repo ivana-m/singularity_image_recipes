@@ -1,0 +1,3 @@
+Tag ID	Zone	Timestamp	Power Cap Long (W)	Power Cap Short (W)	Time Window Long (s)	Time Window Short (s)	Time since start (s)	PCAP FLAG	Number of active poli tags	Emon tag list
+0	PACKAGE	2018-02-07 22:37:08	220.000000	220.000000	1.000000	0.009766	0.004472	1	1	application_summary"
+1	PACKAGE	2018-02-07 22:37:13	215.000000	258.000000	1.000000	0.009766	5.029696	2	0	
