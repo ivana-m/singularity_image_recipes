@@ -12,7 +12,7 @@ CFLAGS+= -fopenmp
 endif
 ifeq ($(CRAY),yes)
 CC=mpicc
-CFLAGS+= -qopenmp
+CFLAGS+= -fopenmp
 endif
 ifeq ($(BGQ),yes)
 CC=mpixlc
