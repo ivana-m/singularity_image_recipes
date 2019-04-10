@@ -22,7 +22,7 @@ From: centos
    # build our code
    yum update -y
    yum groupinstall -y "Development Tools"
-   yum install -y gcc g++
+   yum install -y gcc gcc-c++ g++ wget
 
    # install MPICH
    MPICH_VERSION=3.3
