@@ -46,7 +46,8 @@ From: centos
    
    # build
    mpicc -o pi -fPIC pi.c
-   
+
+   # build PoLiMEr 
    cd /myapp/PoLiMEr
    export CRAYPE_LINK_TYPE=dynamic
    make CRAY=yes COBALT=yes NOOMP=yes
