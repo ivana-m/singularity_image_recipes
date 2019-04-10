@@ -23,12 +23,29 @@ From: centos
    yum update -y
    yum groupinstall -y "Development Tools"
    yum install -y gcc g++
+
+   # install MPICH
+   MPICH_VERSION=3.3
+   mkdir /mpich
+   cd /mpich
+   wget http://www.mpich.org/static/downloads/$MPICH_VERSION/mpich-$MPICH_VERSION.tar.gz
+   tar xf mpich-$MPICH_VERSION.tar.gz --strip-components=1
+
+   # disable the addition of the RPATH to compiled executables
+   # this allows us to override the MPI libraries to use those
+   # found via LD_LIBRARY_PATH
+   ./configure --prefix=/mpich/install --disable-wrapper-rpath
+   make -j 4 install
+   # add to local environment to build pi.c
+   export PATH=$PATH:/mpich/install/bin
+   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/mpich/install/lib
+   env | sort
    
    # enter directory where source file was copied
    cd /myapp
    
    # build
-   g++ -o hello_world hello_world.cpp
+   mpicc -o pi -fPIC pi.c
    
    cd /myapp/PoLiMEr
    export CRAYPE_LINK_TYPE=dynamic
