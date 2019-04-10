@@ -1,15 +1,15 @@
 MSR=yes
 POWMGR=yes
 
-CFLAGS=-I. -O3 -g
+CFLAGS=-O3 -g
 Q_AR=ar
-CC=`which cc`
+CC=mpicc
 LIB=
 #JLSE
 ifeq ($(JLSE),yes)
 CFLAGS+=-D_COBALT
 ifneq ($(NOMPI),yes)
-CC=`which mpicc`
+CC=mpicc
 endif
 ifneq ($(NOOMP),yes)
 CFLAGS+=-fopenmp
@@ -110,7 +110,7 @@ $(LIBDIR)/libpolimer.a: $(OBJ)
 	$(Q_AR) rcs $@ $(OBJ)
 
 $(LIBDIR)/libpolimer.so: $(OBJ)
-	`which cc` -shared -o $@ $(OBJ)
+	mpicc -shared -o $@ $(OBJ)
 
 clean:
 	rm -f lib/*.a bin/*.o lib/*.so a.out
